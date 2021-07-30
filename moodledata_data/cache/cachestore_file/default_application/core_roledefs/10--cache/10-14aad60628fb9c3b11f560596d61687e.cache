@@ -1,0 +1,1 @@
+a:1:{s:2:"/1";a:9:{s:18:"moodle/user:update";i:1;s:26:"moodle/user:viewalldetails";i:1;s:18:"moodle/course:view";i:1;s:31:"moodle/course:viewhiddencourses";i:1;s:23:"moodle/user:viewdetails";i:1;s:29:"moodle/user:viewhiddendetails";i:1;s:19:"webservice/rest:use";i:1;s:30:"moodle/course:viewparticipants";i:1;s:27:"moodle/site:accessallgroups";i:1;}}

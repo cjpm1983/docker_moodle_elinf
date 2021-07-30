@@ -1,0 +1,7 @@
+s:362:"<p>Permissions are capability settings. There are 4 options:</p>
+
+<ul><li>Not set</li>
+<li>Allow - Permission is granted for the capability</li>
+<li>Prevent - Permission is removed for the capability, even if allowed in a higher context</li>
+<li>Prohibit - Permission is completely denied  and cannot be overridden at any lower (more specific) context</li>
+</ul>";
