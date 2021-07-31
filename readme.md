@@ -37,6 +37,8 @@ curl -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/s
  - sudo usermod -aG docker $USER
  - newgrp docker 
 
+5. Aun no resuelvo una cuestion de permisos en mi caso para desarrollo simplemente le di chmod 777 -R * 
+
 Listo!
 
 correr con el comando
