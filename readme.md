@@ -11,16 +11,18 @@ Requerimientos:
 - debe tener instalado docker-compose
 - Fue necesario instalar el plugin local-persist para lograr persistencia de los volumenes, (si no se siente cómodo usando plugins de terceros puede probar con el driver "local" incluido en docker para definir los volumenes locales). 
 
-instalar el plugin local-persist con el comando:
+Instalacion:
+
+1. instalar el plugin local-persist con el comando:
 curl -fsSL https://raw.githubusercontent.com/MatchbookLab/local-persist/master/scripts/install.sh | sudo bash
 
 
-Una vez cumplidos los requerimientos modificar la ubicacion de los 3 volumenes en el archivo docker-compose a la ubicación deseada en su sistema.
+2. Una vez cumplidos los requerimientos modificar la ubicacion de los 3 volumenes en el archivo docker-compose a la ubicación deseada en su sistema.
 	Ej.
 	...
 	   mountpoint: /home/cpalacios/Documents/dockering/moodle4/moodle_data
 	...
-Si lo desea puede modificar los puertos mapeados, actualmente el servicio http sale por el 80 y el https por el 443,
+3. Si lo desea puede modificar los puertos mapeados, actualmente el servicio http sale por el 80 y el https por el 443,
 	Ej
 	...
 	  moodle:
@@ -30,6 +32,13 @@ Si lo desea puede modificar los puertos mapeados, actualmente el servicio http s
 	      - '443:8443'
 	...
 
+4. Solo he probado utilizando docker como noroot, para ejecutar comandos sin ser root noroot:
+ - sudo groupadd docker
+ - sudo usermod -aG docker $USER
+ - newgrp docker 
+
+Listo!
+
 correr con el comando
 
 docker-compose up -d
@@ -38,9 +47,11 @@ detener con:
 
 docker-compose down
 
+Credenciales del Moodle
 Usuario: admin
 Contraseña: Elinfdev.2021
 
+/////////////////////////////INFORMACION ADICIONAL/////////////////////////////////////////
 
 Este contenedor incluye un campo de perfil ORCID para el trabajo en la integracion
 
