@@ -564,6 +564,7 @@ $cache = array (
     ),
     'local' => 
     array (
+      'adminer' => '/bitnami/moodle/local/adminer',
     ),
     'h5plib' => 
     array (
@@ -2933,6 +2934,7 @@ $cache = array (
     'gradingform_rubric\\privacy\\provider' => '/bitnami/moodle/grade/grading/form/rubric/classes/privacy/provider.php',
     'h5plib_v124\\local\\library\\handler' => '/bitnami/moodle/h5p/h5plib/v124/classes/local/library/handler.php',
     'h5plib_v124\\privacy\\provider' => '/bitnami/moodle/h5p/h5plib/v124/classes/privacy/provider.php',
+    'local_adminer\\privacy\\provider' => '/bitnami/moodle/local/adminer/classes/privacy/provider.php',
     'logstore_database\\helper' => '/bitnami/moodle/admin/tool/log/store/database/classes/helper.php',
     'logstore_database\\log\\store' => '/bitnami/moodle/admin/tool/log/store/database/classes/log/store.php',
     'logstore_database\\privacy\\provider' => '/bitnami/moodle/admin/tool/log/store/database/classes/privacy/provider.php',
@@ -5225,6 +5227,7 @@ $cache = array (
       ),
       'local' => 
       array (
+        'adminer' => '/bitnami/moodle/local/adminer/settings.php',
       ),
       'h5plib' => 
       array (

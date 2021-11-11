@@ -13,8 +13,8 @@ services:
   moodle:
     image: docker.uclv.cu/bitnami/moodle:3
     ports:
-      - '80:8080'
-      - '443:8443'
+      - '8080:8080'
+      - '8443:8443'
     environment:
       - MOODLE_DATABASE_HOST=mariadb
       - MOODLE_DATABASE_PORT_NUMBER=3306
@@ -31,12 +31,12 @@ volumes:
   mariadb_data:
     driver: local-persist
     driver_opts:
-      mountpoint: /home/cpalacios/Documents/dockering/moodle4/mariadb_data
+      mountpoint: /home/cpalacios/Documents/moodleDocker/docker_moodle_elinf/mariadb_data
   moodle_data:
     driver: local-persist
     driver_opts:
-      mountpoint: /home/cpalacios/Documents/dockering/moodle4/moodle_data
+      mountpoint: /home/cpalacios/Documents/moodleDocker/docker_moodle_elinf/moodle_data
   moodledata_data:
     driver: local-persist
     driver_opts:
-      mountpoint: /home/cpalacios/Documents/dockering/moodle4/moodledata_data
+      mountpoint: /home/cpalacios/Documents/moodleDocker/docker_moodle_elinf/moodledata_data
