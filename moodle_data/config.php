@@ -33,5 +33,8 @@ $CFG->directorypermissions = 02775;
 
 require_once(__DIR__ . '/lib/setup.php');
 
+//Frontpage personalizado por mi
+$CFG->customfrontpageinclude = 'frontpage/page.html';
+
 // There is no php closing tag in this file,
 // it is intentional because it prevents trailing whitespace problems!
