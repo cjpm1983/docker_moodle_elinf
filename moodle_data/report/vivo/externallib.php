@@ -22,6 +22,20 @@ class report_vivo_external extends external_api {
      *
      * @return external_function_parameters
      */
+    public static function get_courses_from_cfield_parameters() {
+        return new external_function_parameters(
+            array(
+                            'customfield_name' => new external_value(PARAM_RAW, 'Nombre del campo personalizado por el que se va  a hacer la busqueda - debe ser unico e. orcid'),
+                            'customfield_value' => new external_value(PARAM_RAW, 'Valor del campo personalizado'),
+                             )
+        );
+    }
+
+    /**
+     * Returns description of method parameters
+     *
+     * @return external_function_parameters
+     */
     public static function get_user_from_cfield_parameters() {
         return new external_function_parameters(
             array(
@@ -29,6 +43,33 @@ class report_vivo_external extends external_api {
                             'customfield_value' => new external_value(PARAM_RAW, 'Valor del campo personalizado'),
                              )
         );
+    }
+
+
+    /**
+     * Returns description of method result value
+     *
+     * @return external_single_structure
+     * @since Moodle 3.1
+     */
+    public static function get_courses_from_cfield_returns() {
+        return new external_single_structure(
+            array(
+                'courses' => new external_multiple_structure(
+                    new external_single_structure(
+                        array(
+                            'id' => new external_value(PARAM_INT, 'Id del curso de Moodle'),
+                            'course_name' => new external_value(PARAM_TEXT, 'Nombre del Curso'),
+                            'course_faculty' => new external_value(PARAM_TEXT, 'Facultad'),
+                            'start_date' => new external_value(PARAM_INT, 'Timestamp de la fecha de inicio'),
+							'end_date' => new external_value(PARAM_INT, 'Timestamp de la fecha de culminacion')
+                        
+               )
+			)
+		),
+                'warnings' => new external_warnings(),
+		)
+	);
     }
 
 
@@ -51,6 +92,77 @@ class report_vivo_external extends external_api {
     }
 
 
+/**
+     * @return array de valores del campo usuario
+     */
+    public static function get_courses_from_cfield($customfield_name,$customfield_value) {
+
+        global $CFG, $DB;
+        require_once("$CFG->dirroot/group/lib.php");
+
+        $params = self::validate_parameters(
+            self::get_user_from_cfield_parameters(), array('customfield_name'=>$customfield_name,'customfield_value'=>$customfield_value)
+        );
+
+        $campo = $customfield_name;
+        //$campo = 'campo1';
+        //die($campo);
+    
+        $parametros=array('param1'=>$campo) ;
+        $registro_user_info_fields = $DB->get_record_sql('SELECT * FROM {user_info_field} WHERE shortname = :param1',$parametros );
+
+
+        $parametros1=array( 
+                            'param1'=>$customfield_value,
+                            'param2'=>$registro_user_info_fields->id
+                            ) ;
+
+
+        $registro_user_info_data = $DB->get_record_sql('SELECT * FROM {user_info_data} WHERE data = :param1 AND fieldid=:param2',$parametros1 );
+      
+        $uid = $registro_user_info_data->userid;
+        
+        /// Ahora obtenemos los cursos a partir del id obtenido////
+
+        $usuario=@$DB->get_record('user', ['id' => $uid] );
+		
+		//sql para obtener los cursos
+		$sql="SELECT c.id, c.fullname, c.startdate, c.enddate, u.lastname, r.shortname, ct.path, c.category 
+		
+		FROM {course} AS c
+		JOIN {context} AS ct ON c.id = ct.instanceid
+		JOIN {role_assignments} AS ra ON ra.contextid = ct.id
+		JOIN {user} AS u ON u.id = ra.userid
+		JOIN {role} AS r ON r.id = ra.roleid
+		WHERE r.shortname = 'editingteacher' AND u.id = ?
+		";
+        
+		
+		@$cursosCrudo = $DB->get_records_sql($sql, array($usuario->id)); 
+		
+		$cursos=array();
+		
+		foreach ($cursosCrudo as $curso){
+			        $cursos[] = array(
+						'id' => $curso->id,
+						'course_name' => $curso->fullname,
+						'course_faculty' => self::getFacultad($curso->id,$curso->category),
+						'start_date' => $curso->startdate,
+						'end_date' => $curso->enddate
+					);
+		}
+		
+		$result = array(
+			'courses' => $cursos
+		);
+
+		
+        return $result;
+    
+
+   }
+
+	
 /**
      * @return array de valores del campo usuario
      */
@@ -91,7 +203,6 @@ class report_vivo_external extends external_api {
         return $result;
     }
 
-	
 	
 	
 	

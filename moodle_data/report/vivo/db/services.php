@@ -28,6 +28,16 @@
 defined('MOODLE_INTERNAL') || die;
 
 $functions = array(
+    'report_get_courses_by_custom_field' => array( //nombre de lafuncion delwebservice
+
+        'classname'   => 'report_vivo_external', //clase que contiene lafuncion externa
+        'methodname'  => 'get_courses_from_cfield',
+        'classpath'   => 'report/vivo/externallib.php',
+        'description' => 'Retrieve the moodle user courses by providing the value of a defined custom profile field.',
+        'type'        => 'read',//permisos en la base de datos(read , write)
+        'ajax'        => true
+        //'services'    => array(MOODLE_OFFICIAL_MOBILE_SERVICE)//OPCIONAL listar los servicios built-in por su shortname que loincorporan 
+    ),
     'report_get_user_by_custom_field' => array( //nombre de lafuncion delwebservice
 
         'classname'   => 'report_vivo_external', //clase que contiene lafuncion externa
@@ -66,6 +76,7 @@ $services = array(
    'VIVO External Service'  => array(
         'functions' => array (
             'report_get_user_by_custom_field',
+            'report_get_courses_by_custom_field',
             'report_get_courses_by_teacher_id',
             'report_get_courses_orphans',
 			'core_course_get_courses',

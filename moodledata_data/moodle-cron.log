@@ -1,1 +1,21 @@
 sh: 1: /usr/sbin/sendmail: not found
+PHP Warning:  Declaration of repository_metadatadspace::type_config_form($mform) should be compatible with repository::type_config_form($mform, $classname = 'repository') in /bitnami/moodle/repository/metadatadspace/lib.php on line 32
+PHP Warning:  Declaration of repository_metadatadspace::type_config_form($mform) should be compatible with repository::type_config_form($mform, $classname = 'repository') in /bitnami/moodle/repository/metadatadspace/lib.php on line 32
+PHP Notice:  cURL request for "https://download.moodle.org/langpack/3.11/languages.md5" failed with: Failed to connect to download.moodle.org port 443: Connection refused (7)* line 1627 of /lib/filelib.php: call to debugging()
+* line 708 of /lib/componentlib.class.php: call to download_file_content()
+* line 59 of /admin/tool/langimport/classes/controller.php: call to lang_installer->get_remote_list_of_languages()
+* line 56 of /admin/tool/langimport/classes/task/update_langpacks_task.php: call to tool_langimport\controller->__construct()
+* line 253 of /lib/cronlib.php: call to tool_langimport\task\update_langpacks_task->execute()
+* line 120 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 178 of /admin/cli/cron.php: call to cron_run()
+ in /bitnami/moodle/lib/weblib.php on line 3257
+PHP Notice:  cURL request for "https://download.moodle.org/langpack/3.11/languages.md5" failed with: Failed to connect to download.moodle.org port 443: Connection refused (7)* line 1627 of /lib/filelib.php: call to debugging()
+* line 708 of /lib/componentlib.class.php: call to download_file_content()
+* line 144 of /admin/tool/langimport/classes/controller.php: call to lang_installer->get_remote_list_of_languages()
+* line 57 of /admin/tool/langimport/classes/task/update_langpacks_task.php: call to tool_langimport\controller->update_all_installed_languages()
+* line 253 of /lib/cronlib.php: call to tool_langimport\task\update_langpacks_task->execute()
+* line 120 of /lib/cronlib.php: call to cron_run_inner_scheduled_task()
+* line 73 of /lib/cronlib.php: call to cron_run_scheduled_tasks()
+* line 178 of /admin/cli/cron.php: call to cron_run()
+ in /bitnami/moodle/lib/weblib.php on line 3257

@@ -111,9 +111,12 @@ if($fromform=$mform->get_data()){
         $campo=$fromform->campo;
     
         $parametros=array('param1'=>$campo) ;
+
+
         $registro_user_info_fields = $DB->get_record_sql('SELECT * FROM {user_info_field} WHERE shortname = :param1',$parametros );
     
         $parametros1=array('param1'=>$fromform->filtro,'param2'=>$registro_user_info_fields->id) ;
+        
         $registro_user_info_data = $DB->get_record_sql('SELECT * FROM {user_info_data} WHERE data = :param1 AND fieldid=:param2',$parametros1 );
         $usuario=@$DB->get_record('user', ['id' => $registro_user_info_data->userid] );
 		
@@ -147,6 +150,7 @@ if($fromform=$mform->get_data()){
                 echo '</tr>';
             echo '</table>';
 		
+            Select t.name, t.age from tabla1 as t where name="Carlos"
 		
 		//sql para obtener los cursos
 		$sql="SELECT c.id, c.fullname, c.startdate, c.enddate, u.lastname, r.shortname, ct.path, c.category 

@@ -31,12 +31,12 @@ volumes:
   mariadb_data:
     driver: local-persist
     driver_opts:
-      mountpoint: /home/cpalacios/Documents/moodleDocker/docker_moodle_elinf/mariadb_data
+      mountpoint: /home/cpalacios/dockering/docker_moodle_elinf/mariadb_data
   moodle_data:
     driver: local-persist
     driver_opts:
-      mountpoint: /home/cpalacios/Documents/moodleDocker/docker_moodle_elinf/moodle_data
+      mountpoint: /home/cpalacios/dockering/docker_moodle_elinf/moodle_data
   moodledata_data:
     driver: local-persist
     driver_opts:
-      mountpoint: /home/cpalacios/Documents/moodleDocker/docker_moodle_elinf/moodledata_data
+      mountpoint: /home/cpalacios/dockering/docker_moodle_elinf/moodledata_data
